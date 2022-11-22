@@ -1,15 +1,20 @@
 import xlwings as xw
 
-wb = xw.Book('Canvas.xlsx')
-sht1 = wb.sheets['Sheet1']
+h=70
+w=120
 
-h=30
-w=h*(25//10)
+def init():
+	
+	global wb
+	global sht1
+	global Matrix
 
-Matrix = [['_' for x in range(w)] for y in range(h)]
+	wb = xw.Book('Canvas.xlsx')
+	sht1 = wb.sheets['Sheet1']
+	Matrix = [['_' for x in range(w)] for y in range(h)]
+	sht1.autofit()
+	sht1.clear_contents()
 
-sht1.autofit()
-sht1.clear_contents()
 
 def drawPoint(x,y,c='#'):
 	Matrix[y][x]=c 
